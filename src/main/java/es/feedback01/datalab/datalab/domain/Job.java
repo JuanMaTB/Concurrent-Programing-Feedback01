@@ -1,34 +1,23 @@
 package es.feedback01.datalab.datalab.domain;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
 public class Job {
 
     private String id;
     private JobStatus status;
     private LocalDateTime createdAt;
 
-    public Job() {
-        this.id = UUID.randomUUID().toString();
-        this.status = JobStatus.PENDING;
-        this.createdAt = LocalDateTime.now();
-    }
+    private int totalTasks;
+    private int completedTasks;
+    private double progress;
 
-    public String getId() {
-        return id;
-    }
-
-    public JobStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(JobStatus status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    private List<JobResult> results = new ArrayList<>();
 }
-
